@@ -32,7 +32,7 @@ iframe{
     height: 95%;
     border:0;
     outline: 0;
-    background-color: black;
+/*     background-color: black; */
     color: aliceblue;
 }
 label i{
