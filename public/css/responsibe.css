@@ -1,0 +1,172 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+/* General reset and full height setup */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: Arial, sans-serif;
+}
+
+body.light-mode {
+    background-color: #f8f9fa; /* Light background for light mode */
+    color: #212529; /* Dark text for light mode */
+}
+
+body.dark-mode {
+    background-color: #343a40; /* Dark background for dark mode */
+    color: #f8f9fa; /* Light text for dark mode */
+}
+
+/* Theme switcher button */
+.theme-switcher {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+}
+
+.btn-light-mode {
+    background-color: #e9ecef; /* Light background for button */
+    color: #212529;
+}
+
+/* Navbar styling */
+.header {
+    margin-bottom: 2rem;
+}
+
+.navbar {
+    background-color: #f8f9fa;
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-nav .nav-link {
+    margin: 0 0.5rem;
+}
+
+.nav-link.active {
+    font-weight: bold;
+}
+
+.nav-link button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+
+
+/* Feed styling */
+.feed-container {
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid gray;
+}
+
+.post {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    max-width: 800px;
+    position: relative;
+    margin: 10px;
+}
+
+.btn-top-right {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #1877f2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn-top-right:hover {
+    background-color: #145dbf;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+/* Footer styling */
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+footer:hover {
+    color: #333;
+    background: #fff;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .form-select {
+        width: 100%;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-nav {
+        flex-direction: column;
+    }
+
+    .feed-container {
+        margin: 0.5rem;
+    }
+
+    .post {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .textarea-editor, .textarea-input, .textarea-output {
+        font-size: 0.875rem;
+        padding: 0.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .controls {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+
+    .btn-top-right {
+        font-size: 12px;
+        padding: 5px 10px;
+    }
+}
