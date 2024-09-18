@@ -1,3 +1,13 @@
+const express = require('express')
+const mongoose = require('mongoose')
+const path = require('path')
+const port = 8000
+
+const app = express()
+app.use(express.static(__dirname))
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.urlencoded({extended : true}))
+
 mongoose.connect("mongodb://127.0.0.1:27017/database_name")
 const db = mongoose.connection
 db.once('open',()=>{
