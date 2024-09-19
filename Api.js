@@ -1,15 +1,36 @@
-const express = require("express");
-const app = express();
+const express = require("express"); 
 const body = require("body-parser");
 const compiler = require("compilex");
+const mongoose = require("mongoose");
+const bcrypt = require("bcrypt"); 
 
+const app = express();
+const options = { stats: true };
 
 app.use(body.json());
+app.use(express.static('public'));
+
+// Connect to MongoDB
+mongoose.connect('mongodb://localhost:27017/codeeditor', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+})
+.then(() => console.log('MongoDB connected'))
+.catch(err => console.error('MongoDB connection error:', err));
+
+// User Schema
+const userSchema = new mongoose.Schema({
+    username: { type: String, required: true, unique: true },
+    email:    { type: String , requried: true, unique:true },
+    password: { type: String, required: true }, // Hash passwords in production!
+});
+
+const User = mongoose.model('user', userSchema);
 
 // Serve static files from the "public" directory
 app.use(express.static('public'));
 
-const options = { stats: true };
+// Initialize the compiler
 compiler.init(options);
 
 // Root route to serve index.html
@@ -18,12 +39,47 @@ app.get("/", function (req, res) {
     res.sendFile(__dirname + "/public/index.html");
 });
 
+// Signup route
+app.post("/signup", async (req, res) => {
+    const { username,email, password } = req.body;
+
+
+    try {
+          // Hash the password before saving
+  const hashedPassword = await bcrypt.hash(password, 10);
+  const newUser = new User({ username,email, password: hashedPassword});
+
+        await newUser.save();
+        res.status(201).send('User created');
+    } catch (error) {
+        res.status(400).send('Error creating user: ' + error.message);
+    }
+});
+app.post("/login", async (req, res) => {
+    const { username, password } = req.body;
+
+    try {
+        const user = await User.findOne({ username });
+        if (!user) {
+            return res.status(401).send('User not found');
+        }
+
+        // Check password
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) {
+            return res.status(401).send('Invalid password');
+        }
+
+        res.status(200).send('Login successful');
+    } catch (error) {
+        res.status(500).send('Error logging in: ' + error.message);
+    }
+});
+
 // Compilation logic remains the same...
 app.post("/compile", function (req, res) {
     const { code, input, lang } = req.body;
 
-    // Compilation logic...
-    
     try {
         if (lang === "Cpp") {
             const envData = { OS: "windows", cmd: "g++", options: { timeout: 10000 } };
@@ -47,7 +103,6 @@ app.post("/compile", function (req, res) {
                 compiler.compilePythonWithInput(envData, code, input, (data) => handleResponse(data, res));
             }
         } else if (lang === "HTML" || lang === "Css" || lang === "JavaScript") {
-            // For HTML, CSS, and JS, just return the code back
             res.send({ output: code });
             console.log("html");
         } else {
