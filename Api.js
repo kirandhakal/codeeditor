@@ -55,28 +55,29 @@ app.post("/signup", async (req, res) => {
         res.status(400).send('Error creating user: ' + error.message);
     }
 });
+//login 
 app.post("/login", async (req, res) => {
     const { username, password } = req.body;
 
     try {
-        const user = await User.findOne({ username });
+        const user = await User.findOne({ username: username.trim() });
         if (!user) {
             return res.status(401).send('User not found');
         }
 
-        // Check password
-        const isMatch = await bcrypt.compare(password, user.password);
+        const isMatch = await bcrypt.compare(password.trim(), user.password);
         if (!isMatch) {
             return res.status(401).send('Invalid password');
         }
 
-        res.status(200).send('Login successful');
+        res.status(200).send({ message: 'Login successful' });
     } catch (error) {
         res.status(500).send('Error logging in: ' + error.message);
     }
 });
 
-// Compilation logic remains the same...
+
+// Compilation logic...
 app.post("/compile", function (req, res) {
     const { code, input, lang } = req.body;
 
