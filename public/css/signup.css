@@ -1,13 +1,12 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(to right, #74ebd5, #9face6);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
 }
-
 .container {
     background: #fff;
     padding: 2em;

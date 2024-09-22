@@ -22,7 +22,7 @@ mongoose.connect('mongodb://localhost:27017/codeeditor', {
 const userSchema = new mongoose.Schema({
     username: { type: String, required: true, unique: true },
     email:    { type: String , requried: true, unique:true },
-    password: { type: String, required: true }, // Hash passwords in production!
+    password: { type: String, required: true }, // Hash passwords in monogodb
 });
 
 const User = mongoose.model('user', userSchema);
