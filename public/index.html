@@ -51,19 +51,19 @@
 
 
     <!-- ###############################MAIN################################# -->
-     <div class="landingpage" id="landingpage">
+     <!-- <div class="landingpage" id="landingpage">
         <div class="image">
             <h1>welcome to KBS ONLINE CODE EDITOR</h1>
             <h2>lets code<button id="show" onclick="show()"> [++]</button></h2>
         </div>
        
-     </div>
+     </div> -->
 
      
 
     <!-- ################################CODEEDITOR############################# -->
 <div class="maincode" id="maincode">
-    <div class="codecontainer" id="codesection">
+    <div class="container">
         <div class="editor-section">
             <div class="controls">
                 <div class="select-container">
@@ -78,11 +78,11 @@
                 </div>
                 <div class="buttons">
                     <button type="button" id="run" class="btn btn-success">Run</button>
-                    <button type="button" id="sharebtn" class="btn btn-primary">Share</button>
-                    <button type="button" id="fullscreen" class="btn btn-info"> [::]</button>
+                    <button type="button" id="share" class="btn btn-primary">Share</button>
+                    <button type="button" id="fullscreen" class="btn btn-info">
                         <button id="theme-toggle" class="btn btn-light-mode">🌙</button>
                         <!-- <i class="icon fullscreen-icon">⛶</i> -->
-                   
+                    </button>
                 </div>
             </div>
             <textarea type="text" id="editor" class="textarea-editor" aria-label="Editor"></textarea>
@@ -97,6 +97,7 @@
                 <textarea id="output" class="textarea-output" aria-label="Output"></textarea>
             </div>
         </div>
+    
     </div>
 </div>
 <!-- post -->
