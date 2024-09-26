@@ -28,26 +28,6 @@
     </div>
     <p>Already have an account? <a href="index.html">Login here</a></p>
 </div>
-   <script>
-        document.getElementById('signupForm').addEventListener('submit', async (event) => {
-            event.preventDefault();
-            const formData = new FormData(event.target);
-            const data = Object.fromEntries(formData.entries());
-
-            try {
-                const response = await fetch('http://localhost:8000/signup', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data),
-                });
-                const result = await response.text();
-                alert(result);
-            } catch (error) {
-                console.error('Error:', error);
-            }
-        });
-    </script>
+  
 </body>
 </html>

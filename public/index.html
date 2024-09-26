@@ -4,20 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Editor</title>
-    <!-- <link rel="stylesheet" href="/css/responsibe.css"> -->
-    <link rel="stylesheet" href="css/codesection.css">
-    <link rel="stylesheet" href="css/landingpage.css">
+    <link rel="stylesheet" href="css/responsibe.css">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/share.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <link href="codemirror-5.65.17/lib/codemirror.css" rel="stylesheet">
-    <link href="codemirror-5.65.17/theme/dracula.css" rel="stylesheet">
-    <script src="codemirror-5.65.17/lib/codemirror.js"></script>
-    <script src="codemirror-5.65.17/mode/clike/clike.js"></script>
-    <script src="codemirror-5.65.17/mode/python/python.js"></script>
-    <script src="codemirror-5.65.17/mode/xml/xml.js"></script>
-    <script src="codemirror-5.65.17/addon/edit/closebrackets.js"></script>
-<script defer src="/scripts.js"></script>
+   
 </head>
 <body>
     <div class="header">
@@ -32,75 +21,38 @@
                         <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
                <li class="nav-item"><a class="nav-link" href="/login.html">Login</a></li>
                         <li class="nav-item"><a class="nav-link" href="/signup.html">Sign Up</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#"><button id="show" onclick="show()"> [++]</button></a></li>
+                        <!-- <li class="nav-item"><a class="nav-link" href="#"><button id="show" onclick="show()"> [++]</button></a></li> -->
                     </ul>
                 </div>
             </div>
         </nav>
     </div>
-    <!-- ###############################PROFILE################################# 
-    <div class="pcontainer">
-        <div class="main-content">
-            <div class="post-creation">
-                <textarea id="post-text" placeholder="What's on your mind?"></textarea>
-                <button onclick="show()">Post</button>
-            </div>
-        </div>
-    </div>
-    -->
+   
 
 
     <!-- ###############################MAIN################################# -->
-     <!-- <div class="landingpage" id="landingpage">
+    <div class="landingpage" id="landingpage">
         <div class="image">
             <h1>welcome to KBS ONLINE CODE EDITOR</h1>
-            <h2>lets code<button id="show" onclick="show()"> [++]</button></h2>
+            <!-- <h2>lets code<button id="show" onclick="show()"> [++]</button></h2> -->
         </div>
        
-     </div> -->
+     </div> 
+ <!-- ###############################PROFILE################################# -->
+ <!-- <div class="pcontainer">
+    <div class="main-content">
+        <div class="post-creation">
+            <textarea id="post-text" placeholder="What's on your mind?"></textarea>
+            <button onclick="show()">Post</button>
+        </div>
+    </div>
+</div> -->
 
      
 
     <!-- ################################CODEEDITOR############################# -->
-<div class="maincode" id="maincode">
-    <div class="container">
-        <div class="editor-section">
-            <div class="controls">
-                <div class="select-container">
-                    <label class="visually-hidden" for="inlineFormSelectPref">choose</label>
-                    <select class="form-select" id="inlineFormSelectPref">
-                        <option selected>Choose...</option>
-                        <option value="HTML">HTML</option>
-                        <option value="Java">Java</option>
-                        <option value="Cpp">Cpp</option>
-                        <option value="Python">Python</option>
-                    </select>
-                </div>
-                <div class="buttons">
-                    <button type="button" id="run" class="btn btn-success">Run</button>
-                    <button type="button" id="share" class="btn btn-primary">Share</button>
-                    <button type="button" id="fullscreen" class="btn btn-info">
-                        <button id="theme-toggle" class="btn btn-light-mode">🌙</button>
-                        <!-- <i class="icon fullscreen-icon">⛶</i> -->
-                    </button>
-                </div>
-            </div>
-            <textarea type="text" id="editor" class="textarea-editor" aria-label="Editor"></textarea>
-        </div>
-        <div class="input-output-section">
-            <div class="input-container">
-                <label for="input" class="label">Input</label>
-                <textarea id="input" class="textarea-input" aria-label="Input"></textarea>
-            </div>
-            <div class="output-container">
-                <label for="output" class="label">Output</label>
-                <textarea id="output" class="textarea-output" aria-label="Output"></textarea>
-            </div>
-        </div>
-    
-    </div>
-</div>
-<!-- post -->
+
+<!-- #######################################post####################### -->
 <div class="feed-container" id="feed">
     <div class="post">
         <div class="user-info">

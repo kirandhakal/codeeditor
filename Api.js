@@ -75,7 +75,25 @@ app.post("/login", async (req, res) => {
         res.status(500).send('Error logging in: ' + error.message);
     }
 });
+// //sharecode
+// Define a schema and model
+// const dataSchema = new mongoose.Schema({
+//     code: String,
+    
+//   });
+//   const code =mongoose.model('code',userSchema)
 
+// app.post("/share", async (req, res) => {
+//     const { code} = req.body;
+// try {
+//   const newCode = new code({ shareCode});
+
+//         await newCode.save();
+//         res.status(201).send('User created');
+//     } catch (error) {
+//         res.status(400).send('Error creating user: ' + error.message);
+//     }
+// });
 
 // Compilation logic...
 app.post("/compile", function (req, res) {
@@ -103,10 +121,20 @@ app.post("/compile", function (req, res) {
             } else {
                 compiler.compilePythonWithInput(envData, code, input, (data) => handleResponse(data, res));
             }
-        } else if (lang === "HTML" || lang === "Css" || lang === "JavaScript") {
-            res.send({ output: code });
-            console.log("html");
-        } else {
+        }
+        //  else if (lang === "HTML" || lang === "Css" || lang === "JavaScript") {
+        //     res.send({ output: code });
+        //     console.log("html");
+        // } 
+        else if(lang == "c#"){
+            var envData = { OS : "windows"}; 
+            //mono modules for linux is not included till now
+            compiler.compileCS( envData , code , function(data){
+                res.send(data);
+            });    
+
+        }
+        else {
             res.status(400).send({ output: "Unsupported language" });
         }
     } catch (e) {

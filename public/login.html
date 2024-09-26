@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="css/login.css">
+   
 </head>
 <body>
-    <div id="container">
+    <!-- <div id="container">
         <h1>Login</h1>
         <form id="loginForm">
             <input type="text" name="username" placeholder="Username" required>
@@ -15,8 +16,29 @@
             <button type="submit">Login</button>
         </form>
     </div>
-    
+     -->
 
+     <div class="container">
+        <!-- Left Section: Logo and Text -->
+        <div class="left-section">
+            <h1 class="logo">KBS </h1>
+            <p class="subtitle">ONLINE CODE EDITOR.</p>
+        </div>
+        
+        <!-- Right Section: Login Box -->
+        <div class="right-section">
+            <div class="login-box">
+                <form action="#" method="post">
+                    <input type="text" name="email" placeholder="Email or phone number" class="input-field">
+                    <input type="password" name="password" placeholder="Password" class="input-field">
+                    <button type="submit" class="login-btn">Log In</button>
+                    <a href="#" class="forgot-password">Forgot password?</a>
+                    <div class="divider"></div>
+                    <button class="create-btn">Create new account</button>
+                </form>
+            </div>
+        </div>
+    </div>
     <script>
         document.getElementById('loginForm').addEventListener('submit', async (event) => {
             event.preventDefault();
@@ -39,7 +61,7 @@
                 if (response.ok) {
                     const result = await response.json();
                     alert(result.message); // Show success message
-                    window.location.href = 'index.html'; // Redirect to share.html
+                    window.location.href = 'main.html'; // Redirect to index.html
                 } else {
                     const errorMessage = await response.text();
                     alert(errorMessage);
