@@ -3,74 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="css/login.css">
-   
+    <title>Code Editor</title>
+    <!-- <link rel="stylesheet" href="/css/responsibe.css"> -->
+    <link rel="stylesheet" href="css/codesection.css">
+    <link rel="stylesheet" href="css/landingpage.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/share.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link href="codemirror-5.65.17/lib/codemirror.css" rel="stylesheet">
+    <link href="codemirror-5.65.17/theme/dracula.css" rel="stylesheet">
+    <script src="codemirror-5.65.17/lib/codemirror.js"></script>
+    <script src="codemirror-5.65.17/mode/clike/clike.js"></script>
+    <script src="codemirror-5.65.17/mode/python/python.js"></script>
+    <script src="codemirror-5.65.17/mode/xml/xml.js"></script>
+    <script src="codemirror-5.65.17/addon/edit/closebrackets.js"></script>
+<script defer src="/scripts.js"></script>
 </head>
 <body>
-    <!-- <div id="container">
-        <h1>Login</h1>
-        <form id="loginForm">
-            <input type="text" name="username" placeholder="Username" required>
-            <input type="password" name="password" placeholder="Password" required>
-            <button type="submit">Login</button>
-        </form>
+    <div class="header">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">KBS</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+               <li class="nav-item"><a class="nav-link" href="/login.html">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/signup.html">Sign Up</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#"><button id="show" onclick="show()"> [++]</button></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </div>
-     -->
-
-     <div class="container">
-        <!-- Left Section: Logo and Text -->
-        <div class="left-section">
-            <h1 class="logo">KBS </h1>
-            <p class="subtitle">ONLINE CODE EDITOR.</p>
-        </div>
-        
-        <!-- Right Section: Login Box -->
-        <div class="right-section">
-            <div class="login-box">
-                <form action="#" method="post">
-                    <input type="text" name="email" placeholder="Email or phone number" class="input-field">
-                    <input type="password" name="password" placeholder="Password" class="input-field">
-                    <button type="submit" class="login-btn">Log In</button>
-                    <a href="#" class="forgot-password">Forgot password?</a>
-                    <div class="divider"></div>
-                    <button class="create-btn">Create new account</button>
-                </form>
+    <!-- ###############################PROFILE################################# 
+    <div class="pcontainer">
+        <div class="main-content">
+            <div class="post-creation">
+                <textarea id="post-text" placeholder="What's on your mind?"></textarea>
+                <button onclick="show()">Post</button>
             </div>
         </div>
     </div>
-    <script>
-        document.getElementById('loginForm').addEventListener('submit', async (event) => {
-            event.preventDefault();
-            const formData = new FormData(event.target);
-            const data = Object.fromEntries(formData.entries());
-    
-            console.log('Submitting login:', data); // Debugging line
-    
-            try {
-                const response = await fetch('http://localhost:8000/login', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data),
-                });
-    
-                console.log('Response status:', response.status); // Debugging line
-    
-                if (response.ok) {
-                    const result = await response.json();
-                    alert(result.message); // Show success message
-                    window.location.href = 'main.html'; // Redirect to index.html
-                } else {
-                    const errorMessage = await response.text();
-                    alert(errorMessage);
-                }
-            } catch (error) {
-                console.error('Error:', error);
-            }
-        });
-    </script>
-    
+    -->
+
+
+    <!-- ###############################MAIN################################# -->
+     <div class="landingpage" id="landingpage">
+        <div class="image">
+            <h1>welcome to KBS ONLINE CODE EDITOR</h1>
+            <h2>lets code<button id="show" onclick="show()"> [++]</button></h2>
+        </div>
+       
+     </div>
+<!-- ################################CODEEDITOR############################# -->
+<div class="maincode" id="maincode">
+    <div class="codecontainer" id="codesection">
+        <div class="editor-section">
+            <div class="controls">
+                <div class="select-container">
+                    <label class="visually-hidden" for="inlineFormSelectPref">choose</label>
+                    <select class="form-select" id="inlineFormSelectPref">
+                        <option selected>Choose...</option>
+                        <option value="HTML">HTML</option>
+                        <option value="Java">Java</option>
+                        <option value="Cpp">Cpp</option>
+                        <option value="Python">Python</option>
+                    </select>
+                </div>
+                <div class="buttons">
+                    <button type="button" id="run" class="btn btn-success">Run</button>
+                    <button type="button" id="sharebtn" class="btn btn-primary">Share</button>
+                    <button type="button" id="fullscreen" class="btn btn-info"> [::]</button>
+                        <button id="theme-toggle" class="btn btn-light-mode">🌙</button>
+                        <!-- <i class="icon fullscreen-icon">⛶</i> -->
+                   
+                </div>
+            </div>
+            <textarea type="text" id="editor" class="textarea-editor" aria-label="Editor"></textarea>
+        </div>
+        <div class="input-output-section">
+            <div class="input-container">
+                <label for="input" class="label">Input</label>
+                <textarea id="input" class="textarea-input" aria-label="Input"></textarea>
+            </div>
+            <div class="output-container">
+                <label for="output" class="label">Output</label>
+                <textarea id="output" class="textarea-output" aria-label="Output"></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- post -->
+<div class="feed-container" id="feed">
+    <div class="post">
+        <div class="user-info">
+            <img src="profile-pic.jpg" alt="Profile Picture" class="profile-pic">
+            <div class="user-details">
+                <p class="user-name">John Doe</p>
+                <p class="post-time">2 hours ago</p>
+            </div>
+        </div>
+       <div class="share" id="share">there is a code..........</div>
+        <button class="btn-top-right"  onclick="show()">edit</button>
+       
+    </div>
+</div>
+<footer>
+    &copy; 2024  
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
