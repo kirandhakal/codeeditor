@@ -1,4 +1,4 @@
-/* body {
+body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
     background: linear-gradient(to right, #74ebd5, #9face6);
     display: flex;
@@ -64,97 +64,13 @@ button:hover {
 
 button:active {
     transform: translateY(0);
-} */
+}
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f2f5;
-}
-
-.container {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 100vh;
-    padding: 0 20px;
-}
-
-.left-section {
-    text-align: left;
-    color: #1877f2;
-}
-
-.logo {
-    font-size: 50px;
-    font-weight: bold;
-}
-
-.subtitle {
-    font-size: 24px;
-    color: #1c1e21;
-    margin-top: 10px;
-}
-
-.right-section {
-    background-color: #fff;
-    padding: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    width: 350px;
-}
-
-.login-box {
-    text-align: center;
-}
-
-.input-field {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border: 1px solid #dddfe2;
-    border-radius: 6px;
-    font-size: 16px;
-}
-
-.login-btn {
-    width: 100%;
-    padding: 14px;
-    background-color: #1877f2;
-    border: none;
-    color: white;
-    border-radius: 6px;
-    font-size: 18px;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-.login-btn:hover {
-    background-color: #165fe3;
-}
-
-.forgot-password {
-    display: block;
-    margin-top: 15px;
-    color: #1877f2;
-    text-decoration: none;
-}
-
-.forgot-password:hover {
-    text-decoration: underline;
-}
-
-.divider {
-    margin: 20px 0;
-    height: 1px;
-    background-color: #dddfe2;
-}
-
 .create-btn {
     width: 100%;
     padding: 14px;
@@ -168,4 +84,22 @@ body {
 
 .create-btn:hover {
     background-color: #36a420;
+}
+.divider {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 16px; 
+    color: #333; 
+}
+
+.divider a.nav-link {
+    color: #007bff; 
+    text-decoration: none; 
+    font-weight: bold; 
+    margin-left: 5px;
+}
+
+.divider a.nav-link:hover {
+    text-decoration: underline;
+    color: #0056b3; 
 }
