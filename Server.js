@@ -36,7 +36,7 @@ compiler.init(options);
 // Root route to serve index.html
 app.get("/", function (req, res) {
     compiler.flush(() => console.log("Compiler resources cleared."));
-    res.sendFile(__dirname + "/public/index.html");
+    res.sendFile(__dirname + "/public/login.html");
 });
 
 // Signup route
