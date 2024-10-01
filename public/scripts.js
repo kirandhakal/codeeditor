@@ -102,6 +102,7 @@ document.getElementById("run").addEventListener("click", async function () {
         document.getElementById("output").value = "Error: " + error;
     }
 });
+
 // ##############################CHECK##################
 window.onload = function() {
     // Your JavaScript code here

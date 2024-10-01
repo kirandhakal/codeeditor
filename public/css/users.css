@@ -5,6 +5,7 @@ html, body {
     height: 100%;
     width: 100%;
     font-family: Arial, sans-serif;
+    background-color: hsl(84, 12%, 84%);
 }
 h1{
     font-family: 'Gill Sans', 'Arial','Trebuchet MS', sans-serif;

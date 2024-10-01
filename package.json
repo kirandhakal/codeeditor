@@ -1,7 +1,7 @@
 {
   "name": "codeeditor",
   "version": "1.0.0",
-  "main": "app1.js",
+  "main": "server.js",
   "dependencies": {
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.3",
@@ -33,7 +33,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Kiran",
   "license": "ISC",
   "description": ""
 }
