@@ -22,6 +22,7 @@ table, th, td {
 th, td {
     padding: 10px;
     text-align: left;
+    cursor: pointer;
 }
 button {
     padding: 5px 10px;
@@ -29,4 +30,14 @@ button {
     /* background-color: red; */
     /* border: none; */
     cursor: pointer;
+    background-color: red;
+    color: aliceblue;
+    border-radius: 5px solid black;
+    border: 5px;
+}
+button:hover{
+    background-color: rgb(170, 162, 162);
+    color: rgb(249, 62, 0);
+    border-radius: 5px solid black;
+    
 }
