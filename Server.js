@@ -1,5 +1,4 @@
 const express = require("express"); 
-const body = require("body-parser");
 const compiler = require("compilex");
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt"); 
@@ -7,7 +6,7 @@ const bcrypt = require("bcrypt");
 const app = express();
 const options = { stats: true };
 
-app.use(body.json());
+app.use(express.json());
 app.use(express.static('public'));
 
 // Connect to MongoDB
@@ -21,11 +20,11 @@ mongoose.connect('mongodb://localhost:27017/codeeditor', {
 // User Schema
 const userSchema = new mongoose.Schema({
     username: { type: String, required: true, unique: true },
-    email:    { type: String , requried: true, unique:true },
-    password: { type: String, required: true }, // Hash passwords in production!
+    email:    { type: String, required: true, unique: true }, // Fixed typo
+    password: { type: String, required: true },
 });
 
-const User = mongoose.model('user', userSchema);
+const User = mongoose.model('User', userSchema);
 
 // Serve static files from the "public" directory
 app.use(express.static('public'));
@@ -33,21 +32,20 @@ app.use(express.static('public'));
 // Initialize the compiler
 compiler.init(options);
 
-// Root route to serve index.html
+// Root route to serve login page
 app.get("/", function (req, res) {
     compiler.flush(() => console.log("Compiler resources cleared."));
-    res.sendFile(__dirname + "/public/index.html");
+    res.sendFile(__dirname + "/public/login.html");
 });
 
 // Signup route
 app.post("/signup", async (req, res) => {
-    const { username,email, password } = req.body;
-
+    const { username, email, password } = req.body;
 
     try {
-          // Hash the password before saving
-  const hashedPassword = await bcrypt.hash(password, 10);
-  const newUser = new User({ username,email, password: hashedPassword});
+        // Hash the password before saving
+        const hashedPassword = await bcrypt.hash(password, 10);
+        const newUser = new User({ username, email, password: hashedPassword });
 
         await newUser.save();
         res.status(201).send('User created');
@@ -55,28 +53,29 @@ app.post("/signup", async (req, res) => {
         res.status(400).send('Error creating user: ' + error.message);
     }
 });
+
+// Login route
 app.post("/login", async (req, res) => {
     const { username, password } = req.body;
 
     try {
-        const user = await User.findOne({ username });
+        const user = await User.findOne({ username: username.trim() });
         if (!user) {
             return res.status(401).send('User not found');
         }
 
-        // Check password
-        const isMatch = await bcrypt.compare(password, user.password);
+        const isMatch = await bcrypt.compare(password.trim(), user.password);
         if (!isMatch) {
             return res.status(401).send('Invalid password');
         }
 
-        res.status(200).send('Login successful');
+        res.status(200).send({ message: 'Login successful' });
     } catch (error) {
         res.status(500).send('Error logging in: ' + error.message);
     }
 });
 
-// Compilation logic remains the same...
+// Compilation logic
 app.post("/compile", function (req, res) {
     const { code, input, lang } = req.body;
 
@@ -102,9 +101,9 @@ app.post("/compile", function (req, res) {
             } else {
                 compiler.compilePythonWithInput(envData, code, input, (data) => handleResponse(data, res));
             }
-        } else if (lang === "HTML" || lang === "Css" || lang === "JavaScript") {
-            res.send({ output: code });
-            console.log("html");
+        } else if (lang === "c#") {
+            const envData = { OS: "windows" }; 
+            compiler.compileCS(envData, code, (data) => res.send(data));
         } else {
             res.status(400).send({ output: "Unsupported language" });
         }
