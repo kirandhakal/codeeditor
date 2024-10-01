@@ -52,45 +52,6 @@ button:hover {
     background-color: #0056b3;
 }
 
-.social-signup {
-    margin-top: 1em;
-}
-
-.social-signup p {
-    margin-bottom: 0.5em;
-}
-
-.social-button {
-    width: 100%;
-    padding: 0.8em;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1em;
-    cursor: pointer;
-    margin-bottom: 0.5em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.github {
-    background-color: #333;
-    color: #fff;
-}
-
-.github:hover {
-    background-color: #000;
-}
-
-.google {
-    background-color: #DB4437;
-    color: #fff;
-}
-
-.google:hover {
-    background-color: #C1351D;
-}
-
 p {
     margin-top: 1em;
 }
@@ -102,4 +63,10 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+.divider {
+    border: none; 
+    height: 1px; 
+    background-color: #ccc; 
+    margin: 20px 0;
 }

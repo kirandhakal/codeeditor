@@ -1,9 +1,9 @@
-const express = require("express"); 
+const express = require("express");
 const body = require("body-parser");
 const compiler = require("compilex");
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
-const methodOverride = require('method-override'); 
+const methodOverride = require('method-override');
 
 const app = express();
 const options = { stats: true };
@@ -26,13 +26,13 @@ mongoose.connect('mongodb://localhost:27017/codeeditor', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 })
-.then(() => console.log('MongoDB connected'))
-.catch(err => console.error('MongoDB connection error:', err));
+    .then(() => console.log('MongoDB connected'))
+    .catch(err => console.error('MongoDB connection error:', err));
 
 // User Schema for authentication and user listing
 const userSchema = new mongoose.Schema({
     username: { type: String, required: true, unique: true },
-    email:    { type: String, required: true, unique: true },
+    email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
 });
 
@@ -50,15 +50,40 @@ app.get("/", function (req, res) {
 // Signup route
 app.post("/signup", async (req, res) => {
     const { username, email, password } = req.body;
+
     try {
+        // Hash the password before saving
         const hashedPassword = await bcrypt.hash(password, 10);
-        const newUser = new User({ username, email, password: hashedPassword });
-        await newUser.save();
-        res.status(201).send('User created');
+
+        // Create a new user with hashed password
+        const newUser = new User({
+            username: username,
+            email: email,
+            password: hashedPassword
+        });
+
+        // Save the user in MongoDB
+        const savedUser = await newUser.save();
+
+        // Respond with the saved user data in JSON format
+        res.status(201).json({
+            message: 'User created successfully',
+            user: {
+                id: savedUser._id,
+                username: savedUser.username,
+                email: savedUser.email
+                // We typically don't return the password in the response for security reasons
+            }
+        });
     } catch (error) {
-        res.status(400).send('Error creating user: ' + error.message);
+        // Respond with error details in JSON format
+        res.status(400).json({
+            message: 'Error creating user',
+            error: error.message
+        });
     }
 });
+
 
 // Login route
 app.post("/login", async (req, res) => {

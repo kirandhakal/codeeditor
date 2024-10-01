@@ -108,5 +108,4 @@ window.onload = function() {
     console.log("DOM fully loaded and script executed.");
   };
 // #######################################SHARE#######################
-        // JavaScript to handle the share button click event
-     
+    

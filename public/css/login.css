@@ -103,3 +103,16 @@ button:active {
     text-decoration: underline;
     color: #0056b3; 
 }
+.Ldivider {
+    border: none; 
+    height: 1px; 
+    background-color: #ccc; 
+    margin: 20px 0;
+}
+.header{
+    margin-left:-10% ;
+    margin-right: 10%;
+    font-size: 1.2 rem;
+    display: inline-block; /* Makes it a block-level element without line breaks */
+    white-space: nowrap;
+}

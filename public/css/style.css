@@ -86,9 +86,24 @@ body.dark-mode {
 }
 
 .btn-success {
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
     background-color: #28a745; 
 }
+.btnlogout{
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    background-color: #e81818; 
 
+}
 .btn-success:hover {
     background-color: hsl(135, 67%, 2%);
     color: aqua;

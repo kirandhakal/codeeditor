@@ -1,0 +1,31 @@
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: Arial, sans-serif;
+}
+h1{
+    font-family: 'Gill Sans', 'Arial','Trebuchet MS', sans-serif;
+    text-align: center;
+}
+table {
+    width: 50%;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+table, th, td {
+    border: 1px solid black;
+}
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+button {
+    padding: 5px 10px;
+    /* color: white; */
+    /* background-color: red; */
+    /* border: none; */
+    cursor: pointer;
+}
