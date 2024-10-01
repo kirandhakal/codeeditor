@@ -1,36 +1,3 @@
-//#############################SHOW################################//
-// function show(){
-//     var codesection = document.getElementById("maincode");
-//     var feed = document.getElementById("feed");
-//     feed.style.display="none";
-//     maincode.style.display ="block";
-// }
-// Counter to keep track of the number of clicks
-let clickCount = 0;
-
-// Function to show or hide the main code section
-function handleClick() {
-    clickCount++;
-    const codesection = document.getElementById("maincode");
-    const feed =document.getElementById("feed");
- 
-    // Toggle the visibility on odd clicks
-    if (clickCount % 2 === 1) {
-        codesection.style.display = "block"; // Show on odd clicks
-        feed.style.display="none";
-    } else {
-        codesection.style.display = "none"; // Hide on even clicks
-      
-    }
-}
-
-// Add event listener to the button
-function show(){
-    handleClick()
-
-}
-// document.getElementById('show').addEventListener('click', handleClick);
-
 
 //#############################DESIGN################################//
 document.getElementById('fullscreen').addEventListener('click', function() {
@@ -107,6 +74,3 @@ window.onload = function() {
     // Your JavaScript code here
     console.log("DOM fully loaded and script executed.");
   };
-// #######################################SHARE#######################
-        // JavaScript to handle the share button click event
-     

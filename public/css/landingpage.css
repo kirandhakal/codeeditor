@@ -1,0 +1,16 @@
+.landingpage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 30vh;
+    background-color: aliceblue;
+    color: black;
+    margin: 01.5rem;
+}
+.landingpage h2{
+    color: blue;
+    margin: 2rem;
+    padding: 1rem;
+    
+}
