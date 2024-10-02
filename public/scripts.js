@@ -53,7 +53,7 @@ var editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
 });
 
 var option = document.getElementById("inlineFormSelectPref");
-option.addEventListener("change", function () {
+option.addEventListener("change", function () {n
     switch (option.value) {
         case "Java":
             editor.setOption("mode", "text/x-java");

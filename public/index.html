@@ -87,7 +87,10 @@
                 <a class="nav-link" href="/signup.html">Sign Up</a>
             </div>
         </form>
+        <div id="error-message"  ></div>
     </div>
+  
+
 
     <script>
         document.getElementById('loginForm').addEventListener('submit', async (event) => {
@@ -116,14 +119,16 @@
 
                 if (response.ok) {
                     const result = await response.json();
-                    alert(result.message); // Show success message
+                    // alert(result.message); // Show success message
                     window.location.href = 'login.html'; // Redirect to login.html or another page
                 } else {
                     const errorMessage = await response.text();
-                    alert(errorMessage); // Show error message
+                    // alert(errorMessage); // Show error message
+                    document.getElementById('error-message').innerText = errorMessage;
                 }
             } catch (error) {
                 console.error('Error:', error);
+document.getElementById('error-message').innerText = 'An unexpected error occurred.';
             }
         });
     </script>
